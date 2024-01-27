@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #294B29;
+    text-align: center;
+}
+
+.container {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main h1 {
+    margin-top: 3.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffff94;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+
+.game {
+    height: 60vmin;
+    width: 60vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5vmin;
+}
+
+.box {
+    height: 18vmin;
+    width: 18vmin;
+    border: none;
+    border-radius: 1rem;
+    font-size: 8vmin;
+    color: #db0600;
+    background-color: #ffff94;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+#reset-btn {
+    padding: 0.8rem;
+    font-size: 1.25rem;
+    background-color: #ffff94;
+    color: #294b29;
+    border: 3px solid #192a19;
+    border-radius: 0.8rem;
+    font-weight: 800;
+}
+
+#reset-btn:hover {
+    box-shadow: 0px 0px 10px 2px #f3f373;
+}
+
+#new-btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #ffff94;
+    color: #294b29;
+    border: 3px solid #192a19;
+    border-radius: 0.8rem;
+    font-weight: 800;
+}
+
+#new-btn:hover {
+    box-shadow: 0px 0px 10px 2px #f3f373;
+}
+
+.msg-container {
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+#msg {
+    color: #ffff94;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    word-spacing: 2px;
+}
+
+.hide {
+    display: none;
+}
