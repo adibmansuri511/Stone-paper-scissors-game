@@ -1,108 +1,75 @@
-const boxes = document.querySelectorAll(".box");
-const resetBtn = document.querySelector("#reset-btn");
-const newGameBtn = document.querySelector("#new-btn");
-const msgContainer = document.querySelector(".msg-container");
+let userScore = 0;
+let compScore = 0;
+
+const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector("#msg");
 
-let turnO = true; // Player O
-let count = 0;    // To Track Draw
+const userScorePara = document.querySelector("#user-score");
+const compScorePara = document.querySelector("#comp-score");
 
-const winPatterns = [
-    [0, 1, 2],
-    [0, 3, 6],
-    [0, 4, 8],
-    [1, 4, 7],
-    [2, 5, 8],
-    [2, 4, 6],
-    [3, 4, 5],
-    [6, 7, 8]
-];
+const genCompChoice = () => {
+    const options = ["rock", "paper", "scissors"];
+    const randIdx = Math.floor(Math.random() * options.length);
+    return options[randIdx];
+};
 
+const drawGame = () => {
+    msg.innerText = `Game was Draw. Play again.`;
+    msg.style.backgroundColor = "#081b31";
+};
 
-const resetGame = () => {
-    turnO = true;
-    count = 0;
-    enableBoxes();
-    msgContainer.classList.add("hide");
-}
+const showWinner = (userWin, userChoice, compChoice) => {
+    if (userWin) {
+        userScore++;
+        userScorePara.innerText = userScore;
+        msg.innerText = `You win! Your ${userChoice} beats ${compChoice}`;
+        msg.style.backgroundColor = "green";
 
+    } else {
+        compScore++;
+        compScorePara.innerText = compScore;
+        msg.innerText = `You lost. ${compChoice} beats your ${userChoice}`;
+        msg.style.backgroundColor = "red";
+    }
+};
 
-boxes.forEach((box) => {
-    box.addEventListener("click", () => {
-        console.log("Box was clicked.")
-        if (turnO) { // Player O turn
-            box.innerHTML = `<span style="color: #294B29">O</span>`;
-            turnO = false;
-        } else { // Player X turn
-            box.innerText = "X";
-            turnO = true;
+const playGame = (userChoice) => {
+
+    //Generate computer choice
+    const compChoice = genCompChoice();
+    console.log(`Computer choice is : ${compChoice}`);
+
+    if (userChoice === compChoice) {
+        // Draw Game
+        drawGame();
+    } else {
+
+        let userWin = true;
+
+        if (userChoice === "rock") {
+            // paper, scissors
+            userWin = compChoice === "paper" ? false : true;
         }
 
-        box.disabled = true;
-        count++;
-
-        const isWinner = checkWinner();
-
-        if (count === 9 && !isWinner) {
-            gameDraw();
+        else if (userChoice === "paper") {
+            // scissors, rock 
+            userWin = compChoice === "scissors" ? false : true;
         }
+
+        else {
+            // paper, rock
+            userWin = compChoice === "rock" ? false : true;
+        }
+
+        showWinner(userWin, userChoice, compChoice);
+    }
+};
+
+choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+        const userChoice = choice.getAttribute("id");
+        console.log(`User choice is : ${userChoice}`);
+
+        playGame(userChoice);
     });
 });
-
-
-const gameDraw = () => {
-    msg.innerText = `Game was a Draw.`;
-    msgContainer.classList.remove("hide");
-    disableBoxes();
-};
-
-
-const disableBoxes = () => {
-    for (const box of boxes) {
-        box.disabled = true;
-    }
-};
-
-
-const enableBoxes = () => {
-    for (const box of boxes) {
-        box.disabled = false;
-        box.innerText = "";
-    }
-};
-
-
-const showWinner = (winner) => {
-    msg.innerText = `Congratulations, Winner is : ${winner}`;
-    msgContainer.classList.remove("hide");
-    disableBoxes();
-};
-
-
-const checkWinner = () => {
-    for (const pattern of winPatterns) {
-        // console.log(pattern[0], pattern[1], pattern[2]);
-
-        // console.log(
-        //     boxes[pattern[0]].innerText,
-        //     boxes[pattern[1]].innerText,
-        //     boxes[pattern[2]].innerText
-        // );
-
-        const pos1Val = boxes[pattern[0]].innerText;
-        const pos2Val = boxes[pattern[1]].innerText;
-        const pos3Val = boxes[pattern[2]].innerText;
-
-        if (pos1Val != "" && pos2Val != "", pos3Val != "") {
-            if (pos1Val === pos2Val && pos2Val === pos3Val) {
-                console.log(`Winner ${pos1Val}`);
-                showWinner(pos1Val);
-                return true;
-            }
-        }
-    }
-};
-
-
-newGameBtn.addEventListener("click", resetGame);
-resetBtn.addEventListener("click", resetGame);

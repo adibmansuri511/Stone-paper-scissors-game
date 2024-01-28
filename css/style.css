@@ -3,99 +3,161 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 * {
-    font-family: 'Poppins', sans-serif;
     font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-body {
-    background-color: #294B29;
     text-align: center;
 }
 
-.container {
-    height: 70vh;
+body {
+    background-color: #fdf0d1;
+}
+
+h1 {
+    background-color: #643843;
+    color: #fdf0d1;
+    height: 5rem;
+    line-height: 5rem;
+    letter-spacing: 1.5px;
+    word-spacing: 3px;
+}
+
+.choice {
+    height: 130px;
+    width: 130px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-main h1 {
-    margin-top: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #ffff94;
-    letter-spacing: 1px;
-    word-spacing: 2px;
+.choice:hover {
+    cursor: pointer;
+    background-color: #643843;
+    box-shadow: 0px 0px 30px 10px #643843;
 }
 
-.game {
-    height: 60vmin;
-    width: 60vmin;
+img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.choices {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2.5vmin;
+    gap: 7rem;
+    margin-top: 5rem;
 }
 
-.box {
-    height: 18vmin;
-    width: 18vmin;
-    border: none;
-    border-radius: 1rem;
-    font-size: 8vmin;
-    color: #db0600;
-    background-color: #ffff94;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+.score-board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    gap: 5rem;
 }
 
-#reset-btn {
-    padding: 0.8rem;
-    font-size: 1.25rem;
-    background-color: #ffff94;
-    color: #294b29;
-    border: 3px solid #192a19;
-    border-radius: 0.8rem;
-    font-weight: 800;
+#user-score,
+#comp-score {
+    font-size: 3.5rem;
+    color: #643843;
 }
 
-#reset-btn:hover {
-    box-shadow: 0px 0px 10px 2px #f3f373;
-}
-
-#new-btn {
-    padding: 1rem;
-    font-size: 1.25rem;
-    background-color: #ffff94;
-    color: #294b29;
-    border: 3px solid #192a19;
-    border-radius: 0.8rem;
-    font-weight: 800;
-}
-
-#new-btn:hover {
-    box-shadow: 0px 0px 10px 2px #f3f373;
+.user-para,
+.comp-para {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #643843;
 }
 
 .msg-container {
-    height: 100vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 4rem;
+    margin-top: 3rem;
 }
 
 #msg {
-    color: #ffff94;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    word-spacing: 2px;
+    background-color: #643843;
+    color: #fdf0d1;
+    font-size: 1.8rem;
+    display: inline;
+    padding: 0.8rem;
+    border-radius: 1rem;
 }
 
-.hide {
-    display: none;
+@media only screen and (max-width: 768px) {
+    .choices {
+        gap: 3rem;
+        margin-top: 3.5rem;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .choices {
+        flex-direction: column;
+        /* gap: 3rem; */
+        margin-top: 3rem;
+    }
+
+    #user-score,
+    #comp-score {
+        font-size: 3rem;
+    }
+
+    .score-board {
+        font-size: 2rem;
+        margin-top: 2rem;
+        gap: 5rem;
+    }
+
+    .user-para,
+    .comp-para {
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+
+    .msg-container {
+        margin-top: 2rem;
+    }
+
+    #msg {
+        font-size: 1.2rem;
+        padding: 0.7rem;
+        border-radius: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    #user-score,
+    #comp-score {
+        font-size: 2.5rem;
+    }
+
+    .user-para,
+    .comp-para {
+        font-size: 1.5rem;
+    }
+
+    #msg {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    h1 {
+        height: 7rem;
+        line-height: 3rem;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        padding-top: 0.5rem;
+    }
+
+    #msg {
+        font-size: 1.05rem;
+    }
 }

@@ -4,36 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe Game</title>
+    <title>Stone Paper Scissors Game In JavaScript</title>
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-    <div class="msg-container hide">
-        <p id="msg">winner</p>
-        <button id="new-btn">New Game</button>
+    <h1>Rock Paper Scissors</h1>
+    <div class="choices">
+        <div class="choice" id="rock">
+            <img src="./images/rock.png" />
+        </div>
+        <div class="choice" id="paper">
+            <img src="./images/paper.png" />
+        </div>
+        <div class="choice" id="scissors">
+            <img src="./images/scissors.png" />
+        </div>
     </div>
 
-    <main>
-        <h1>Tic Tac Toe Game</h1>
-        <div class="container">
-            <div class="game">
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-                <button class="box"></button>
-            </div>
+    <div class="score-board">
+        <div class="score">
+            <p id="user-score">0</p>
+            <p class="user-para">You</p>
         </div>
-        <button id="reset-btn">Reset Game</button>
-    </main>
+        <div class="score">
+            <p id="comp-score">0</p>
+            <p class="comp-para">Comp</p>
+        </div>
+    </div>
 
+    <div class="msg-container">
+        <p id="msg">Play your move</p>
+    </div>
 
     <!-- Custom js  -->
     <script src="./js/main.js"></script>
